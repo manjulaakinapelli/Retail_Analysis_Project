@@ -1,7 +1,7 @@
 import pandas as pd
 import datetime as dt
 # Load cleaned data
-df= pd.read_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Pyrthon\\Clean_data.csv")
+df= pd.read_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\Clean_data.csv")
 print(df)
 print(df.head())
 print(df.info())
@@ -14,4 +14,4 @@ rfm = df.groupby('CustomerID').agg({'InvoiceDate': lambda X:(Today_dt - X.max())
 rfm.columns = ['Recency', 'Frequency', 'Monetary']
 print(rfm.head())
 # Save RFM data
-rfm.to_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Pyrthon\\rfm_output.csv")
+rfm.to_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\rfm_output.csv")

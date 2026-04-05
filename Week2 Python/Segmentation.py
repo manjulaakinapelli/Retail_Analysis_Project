@@ -1,6 +1,6 @@
 import pandas as pd 
 #Load RFM
-rfm = pd.read_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Pyrthon\\rfm_output.csv")
+rfm = pd.read_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\rfm_output.csv")
 print(rfm.head())
 
 #RFM Scoring
@@ -29,5 +29,5 @@ def Segments(row) :
 rfm['Segment'] = rfm.apply(Segments, axis=1)
 
 # Save final output
-rfm.to_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Pyrthon\\rfm_output1.csv", index=False)
+rfm.to_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\rfm_output1.csv", index=False)
 print("Segmentation Done \n")
