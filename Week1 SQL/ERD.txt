@@ -1,0 +1,28 @@
+dim_customer
+-------------
+CustomerID (PK)
+Country
+PaymentMethod
+
+        |
+        | (FK)
+        ↓
+
+fact_sales
+-------------
+InvoiceNo
+CustomerID (FK)
+ProductCode (FK)
+Quantity
+UnitPrice
+Revenue
+InvoiceDate
+
+        ↑
+        | (FK)
+        |
+
+dim_product
+-------------
+ProductCode (PK)
+ProductName
