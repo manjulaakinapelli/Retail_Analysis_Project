@@ -1,6 +1,6 @@
 import pandas as pd
 # Load Data
-df = pd.read_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\Clean_data.csv")
+df = pd.read_csv("D:\\Manjula\\Retail_Analysis_git\\Retail_Analysis_Project\\Week2 Python\\Clean_data.csv")
 print(df)
 print(df.head())
 print(df.info())
@@ -13,5 +13,5 @@ Basket = df.groupby(['InvoiceNo', 'ProductName'])['Quantity'] \
 #Basket = Basket.applymap(lambda x: 1 if x>0 else 0)
 Basket = (Basket > 0).astype(int)
 #Save
-Basket.to_csv("D:\\Manjula\\Zalima\\Retail Analytics\\Week2 Python\\Basket_data.csv")
+Basket.to_csv("D:\\Manjula\\Retail_Analysis_git\\Retail_Analysis_Project\\Week2 Python\\Basket_data.csv")
 print("Market Basket Ready \n")
