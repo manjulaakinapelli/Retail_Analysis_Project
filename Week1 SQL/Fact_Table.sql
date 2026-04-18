@@ -1,3 +1,4 @@
+--Create consumer 360 as fact_sales 
 CREATE TABLE fact_sales AS
 SELECT
     InvoiceNo,
