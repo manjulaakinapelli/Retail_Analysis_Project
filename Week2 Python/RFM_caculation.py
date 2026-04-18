@@ -7,12 +7,12 @@ print(df)
 # Display first few rows and dataset info
 print(df.head())
 print(df.info())
-# convert
+# convert InvoiceDate column to datetime format
 df['InvoiceDate'] = pd.to_datetime(df["InvoiceDate"])
 print(df.info())
-# Today's date
+# Get the latest date 
 Today_dt = df['InvoiceDate'].max() 
-# RFM
+# Perform RFM aggergation
 rfm = df.groupby('CustomerID').agg({'InvoiceDate': lambda X:(Today_dt - X.max()).days,'InvoiceNo' : 'count', 'Revenue' : 'sum'})
 rfm.columns = ['Recency', 'Frequency', 'Monetary']
 print(rfm.head())
