@@ -3,21 +3,17 @@ SET SQL_SAFE_UPDATES = 0;
 UPDATE consumer360_raw
 SET CustomerID = NULL
 WHERE CustomerID = ' ' OR CustomerID = 0;
-
 select CustomerID from consumer360_raw;
 
 -- Handle negative quantities 
-
 DELETE FROM consumer360_raw
 WHERE Quantity <= 0;
-
 select Quantity from consumer360_raw;
 
 -- Fix inconsistent product names (missing values)
 UPDATE consumer360_raw
 SET ProductName = 'Unknown'
 WHERE ProductName IS NULL OR ProductName = '';
-
 select ProductName from consumer360_raw;
 
 -- Date formatting (convert to ISO standard)
@@ -38,7 +34,6 @@ FROM consumer360_raw
 LIMIT 20;
 
 -- Revenue calculation
-
 ALTER TABLE consumer360_raw
 ADD Revenue DECIMAL(10,2);
 UPDATE consumer360_raw
@@ -47,7 +42,6 @@ SET Revenue = Quantity * UnitPrice;
 select Revenue from consumer360_raw;
 
 -- Updated empty values with unknown
-
 UPDATE consumer360_raw
 SET Country = 'Unknown'
 WHERE Country IS NULL OR Country = '';
@@ -68,4 +62,5 @@ ProductName = TRIM(ProductName),
 Country = TRIM(Country),
 PaymentMethod = TRIM(PaymentMethod);
 
+--CLeaned csv file
 select * from consumer360_raw;
