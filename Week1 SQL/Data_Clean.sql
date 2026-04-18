@@ -17,6 +17,7 @@ select Quantity from consumer360_raw;
 UPDATE consumer360_raw
 SET ProductName = 'Unknown'
 WHERE ProductName IS NULL OR ProductName = '';
+
 select ProductName from consumer360_raw;
 
 -- Date formatting (convert to ISO standard)
@@ -36,11 +37,16 @@ SELECT DISTINCT InvoiceDate
 FROM consumer360_raw
 LIMIT 20;
 
+-- Revenue calculation
+
 ALTER TABLE consumer360_raw
 ADD Revenue DECIMAL(10,2);
 UPDATE consumer360_raw
 SET Revenue = Quantity * UnitPrice;
+
 select Revenue from consumer360_raw;
+
+-- Updated empty values with unknown
 
 UPDATE consumer360_raw
 SET Country = 'Unknown'
