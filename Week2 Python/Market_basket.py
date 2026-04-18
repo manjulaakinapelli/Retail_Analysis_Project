@@ -27,8 +27,9 @@ Basket = df.groupby(['InvoiceNo', 'ProductName'])['Quantity'] \
 
 # If quantity > 0 → 1 (product purchased)
 # If quantity = 0 → 0 (product not purchased)
-#Basket = Basket.applymap(lambda x: 1 if x>0 else 0)
 Basket = (Basket > 0).astype(int)
-#Save
+# Alternative method (commented out):
+# Basket = Basket.applymap(lambda x: 1 if x > 0 else 0)
+# Save the output
 Basket.to_csv("D:\\Manjula\\Retail_Analysis_git\\Retail_Analysis_Project\\Week2 Python\\Basket_data.csv")
 print("Market Basket Ready \n")
