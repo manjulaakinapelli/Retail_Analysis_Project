@@ -1,3 +1,5 @@
+--Dimention table Creation
+--Product Table
 CREATE TABLE dim_product AS
 SELECT DISTINCT
     ProductCode,
@@ -25,6 +27,7 @@ SELECT COUNT(DISTINCT ProductCode) FROM dim_product;
 ALTER TABLE dim_product
 ADD PRIMARY KEY (ProductCode);
 
+--Customer Table
 CREATE TABLE dim_customer AS
 SELECT DISTINCT
     CustomerID,
