@@ -7,7 +7,12 @@ print(df)
 print(df.head())
 print(df.info())
 
-# Basket
+# ----------------------------------
+# Market Basket Preparation
+# ----------------------------------
+
+# Group data by InvoiceNo and ProductName
+# Then sum the Quantity for each product in each invoice
 Basket = df.groupby(['InvoiceNo', 'ProductName'])['Quantity'] \
            .sum().unstack().fillna(0)
 
