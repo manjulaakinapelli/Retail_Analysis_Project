@@ -1,3 +1,10 @@
+# ============================================
+# File: RFM_calculation.py
+# Description: This script performs RFM analysis
+# on retail data to segment customers based on:
+# Recency (last purchase), Frequency (no. of purchases),
+# and Monetary (total spending).
+# ============================================
 # Import required libraries
 import pandas as pd
 import datetime as dt
