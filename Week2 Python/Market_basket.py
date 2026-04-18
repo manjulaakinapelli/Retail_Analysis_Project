@@ -1,3 +1,4 @@
+# Import pandas
 import pandas as pd
 # Load Data
 df = pd.read_csv("D:\\Manjula\\Retail_Analysis_git\\Retail_Analysis_Project\\Week2 Python\\Clean_data.csv")
