@@ -13,10 +13,11 @@ REFERENCES dim_customer(CustomerID);
 CREATE INDEX idx_customer
 ON fact_sales(CustomerID);
 
+--Create index on ProductCode to imrove quality performance
 CREATE INDEX idx_product
 ON fact_sales(ProductCode);
 
---Create index on ProductCode to imrove quality performance
+--Create index on InvoiceDate to improvr speed up date based queries
 CREATE INDEX idx_date
 ON fact_sales(InvoiceDate);
 
