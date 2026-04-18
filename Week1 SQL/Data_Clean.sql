@@ -10,6 +10,7 @@ select CustomerID from consumer360_raw;
 
 DELETE FROM consumer360_raw
 WHERE Quantity <= 0;
+
 select Quantity from consumer360_raw;
 
 -- Fix inconsistent product names (missing values)
