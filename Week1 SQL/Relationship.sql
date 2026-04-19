@@ -1,4 +1,6 @@
 -- Create relationships between fact_slaes and dimention tables
+-- Link ProductCode in fact_sales to dim_product table
+
 ALTER TABLE fact_sales
 ADD CONSTRAINT fk_product
 FOREIGN KEY (ProductCode)
