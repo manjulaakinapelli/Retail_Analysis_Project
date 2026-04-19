@@ -1,15 +1,25 @@
+# ============================================
+# File: RFM_calculation.py
+# Description: This script performs RFM analysis
+# on retail data to segment customers based on:
+# Recency (last purchase), Frequency (no. of purchases),
+# and Monetary (total spending).
+# ============================================
+# Import required libraries
 import pandas as pd
 import datetime as dt
 # Load cleaned data
 df= pd.read_csv("D:\\Manjula\\Retail_Analysis_git\\Retail_Analysis_Project\\Week2 Python\\Clean_data.csv")
 print(df)
+# Display first few rows and dataset info
 print(df.head())
 print(df.info())
+# convert InvoiceDate column to datetime format
 df['InvoiceDate'] = pd.to_datetime(df["InvoiceDate"])
 print(df.info())
-# Today's date
+# Get the latest date 
 Today_dt = df['InvoiceDate'].max() 
-# RFM
+# Perform RFM aggergation
 rfm = df.groupby('CustomerID').agg({'InvoiceDate': lambda X:(Today_dt - X.max()).days,'InvoiceNo' : 'count', 'Revenue' : 'sum'})
 rfm.columns = ['Recency', 'Frequency', 'Monetary']
 print(rfm.head())

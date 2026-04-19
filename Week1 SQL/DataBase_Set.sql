@@ -1,6 +1,6 @@
-create database Project_Retail;
+create database Project_Retail; --Data base creation
 use Project_Retail;
-CREATE TABLE consumer360_raw (
+CREATE TABLE consumer360_raw (  --Table Creation
     InvoiceNo     VARCHAR(50),
     ProductCode   VARCHAR(50),
     ProductName   VARCHAR(255),

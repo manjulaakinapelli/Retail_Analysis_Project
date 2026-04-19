@@ -1,3 +1,4 @@
+--Join the tables
 SELECT
 c.Country,
 SUM(f.revenue) AS TotalSales
