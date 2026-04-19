@@ -23,5 +23,6 @@ ON fact_sales(ProductCode);
 --Create index on InvoiceDate to improvr speed up date based queries
 CREATE INDEX idx_date
 ON fact_sales(InvoiceDate);
+-- Verify
 
 SHOW TABLES;
