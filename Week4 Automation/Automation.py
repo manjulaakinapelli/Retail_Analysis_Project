@@ -8,6 +8,8 @@ scripts = [
     r"D:\Manjula\Retail_Analysis_git\Retail_Analysis_Project\Week2 Python\Market_basket.py"  # Market basket analysis
 ]
 
+# Loop through each script in the list
 for script in scripts:
     print(f"Running: {script}")
+     # Execute the script using subprocess
     subprocess.run(["python", script])
