@@ -5,6 +5,7 @@ ALTER TABLE fact_sales
 ADD CONSTRAINT fk_product
 FOREIGN KEY (ProductCode)
 REFERENCES dim_product(ProductCode);
+-- Link CustomerID in fact_sales to dim_customer table
 
 ALTER TABLE fact_sales
 ADD CONSTRAINT fk_customer
