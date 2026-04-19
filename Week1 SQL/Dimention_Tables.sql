@@ -37,20 +37,31 @@ SELECT COUNT(DISTINCT ProductCode) FROM dim_product;
 ALTER TABLE dim_product
 ADD PRIMARY KEY (ProductCode);
 
---Customer Table
+
+-- ============================================
+-- Customer Dimension Table
+-- ============================================
+
+-- Create Customer Dimension Table
 CREATE TABLE dim_customer AS
 SELECT DISTINCT
-    CustomerID,
-    Country,
-    PaymentMethod
+    CustomerID,  -- Unique customer identifier
+    Country,  -- Customer location
+    PaymentMethod  -- Preferred payment method
 FROM consumer360_raw;
+
+-- Check for duplicate CustomerID entries
 
 SELECT CustomerID, COUNT(*)
 FROM dim_customer
 GROUP BY CustomerID
 HAVING COUNT(*) > 1;
 
+-- Drop table to recreate after handling duplicates
 DROP TABLE dim_customer;
+
+-- Recreate Customer Dimension with unique CustomerID
+-- Using MAX() to resolve duplicate attribute values
 
 CREATE TABLE dim_customer AS
 SELECT
@@ -60,8 +71,12 @@ SELECT
 FROM consumer360_raw
 WHERE CustomerID IS NOT NULL
 GROUP BY CustomerID;
+
+-- Validate row counts
 SELECT COUNT(*) FROM dim_customer;
 SELECT COUNT(DISTINCT CustomerID) FROM dim_customer;
+
+-- Add Primary Key to enforce uniqueness
 ALTER TABLE dim_customer
 ADD PRIMARY KEY (CustomerID);
 
