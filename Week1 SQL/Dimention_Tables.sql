@@ -1,17 +1,25 @@
---Dimention table Creation
---Product Table
+-- ============================================
+-- Dimension Table Creation
+-- ============================================
+
+-- Create Product Dimension Table from raw data
 CREATE TABLE dim_product AS
 SELECT DISTINCT
-    ProductCode,
-    ProductName
+    ProductCode,  -- Unique product identifier
+    ProductName -- Product name
 FROM consumer360_raw;
 
+-- Check for duplicate ProductCode entries
 SELECT ProductCode, COUNT(*)
 FROM dim_product
 GROUP BY ProductCode
 HAVING COUNT(*) > 1;
 
+-- Drop table to recreate after handling duplicates
 DROP TABLE dim_product;
+
+-- Recreate Product Dimension with unique ProductCode
+-- Using MAX(ProductName) to resolve duplicate entries
 
 CREATE TABLE dim_product AS
 SELECT
@@ -20,10 +28,12 @@ SELECT
 FROM consumer360_raw
 WHERE ProductCode IS NOT NULL
 GROUP BY ProductCode;
+
+-- Validate row counts
 SELECT COUNT(*) FROM dim_product;
 SELECT COUNT(DISTINCT ProductCode) FROM dim_product;
 
-
+-- Add Primary Key to ensure uniqueness
 ALTER TABLE dim_product
 ADD PRIMARY KEY (ProductCode);
 
