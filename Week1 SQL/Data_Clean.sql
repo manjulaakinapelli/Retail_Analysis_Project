@@ -51,14 +51,17 @@ STR_TO_DATE(InvoiceDate,'%m/%d/%Y');
 -- Verify conversion
 SELECT InvoiceDate, InvoiceDate_new FROM consumer360_raw
 LIMIT 10;
-SELECT InvoiceDate
-FROM consumer360_raw
+
+-- Check invalid date formats
+SELECT InvoiceDate FROM consumer360_raw
 WHERE STR_TO_DATE(InvoiceDate,'%m/%d/%Y') IS NULL;
 SELECT DISTINCT InvoiceDate
 FROM consumer360_raw
 LIMIT 20;
 
--- Revenue calculation
+-- --------------------------------------------
+-- Revenue Calculation
+-- --------------------------------------------
 ALTER TABLE consumer360_raw
 ADD Revenue DECIMAL(10,2);
 UPDATE consumer360_raw
@@ -66,26 +69,39 @@ SET Revenue = Quantity * UnitPrice;
 
 select Revenue from consumer360_raw;
 
--- Updated empty values with unknown
+-- --------------------------------------------
+-- Handle missing Country values
+-- --------------------------------------------
 UPDATE consumer360_raw
 SET Country = 'Unknown'
 WHERE Country IS NULL OR Country = '';
 select Country from consumer360_raw;
 
+-- --------------------------------------------
+-- Handle missing PaymentMethod values
+-- --------------------------------------------
 UPDATE consumer360_raw
 SET PaymentMethod = 'Unknown'
 WHERE PaymentMethod IS NULL OR PaymentMethod = '';
 select PaymentMethod from consumer360_raw;
 
+-- --------------------------------------------
+-- Remove invalid pricing records
+-- --------------------------------------------
 DELETE FROM consumer360_raw
 WHERE UnitPrice <= 0;
 select UnitPrice from consumer360_raw;
 
+-- --------------------------------------------
+-- Trim extra spaces from text columns
+-- --------------------------------------------
 UPDATE consumer360_raw
 SET
 ProductName = TRIM(ProductName),
 Country = TRIM(Country),
 PaymentMethod = TRIM(PaymentMethod);
 
---CLeaned csv file
+-- --------------------------------------------
+-- Final cleaned dataset preview
+-- --------------------------------------------
 select * from consumer360_raw;
