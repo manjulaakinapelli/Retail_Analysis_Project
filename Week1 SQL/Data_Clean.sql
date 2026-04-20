@@ -24,21 +24,32 @@ WHERE Quantity <= 0;
 -- Verify Quantity
 select Quantity from consumer360_raw;
 
--- Fix inconsistent product names (missing values)
+-- --------------------------------------------
+-- Handle missing Product Names
+-- --------------------------------------------
 UPDATE consumer360_raw
 SET ProductName = 'Unknown'
 WHERE ProductName IS NULL OR ProductName = '';
+
+-- Verify ProductName
 select ProductName from consumer360_raw;
 
--- Date formatting (convert to ISO standard)
+-- --------------------------------------------
+-- Date Formatting (Convert to ISO DATE format)
+-- --------------------------------------------
 DESC consumer360_raw;
+
+-- Add new column for formatted date
 ALTER TABLE consumer360_raw
 ADD InvoiceDate_new DATE;
+
+-- Convert string date to DATE format
 UPDATE consumer360_raw
 SET InvoiceDate_new =
 STR_TO_DATE(InvoiceDate,'%m/%d/%Y');
-SELECT InvoiceDate, InvoiceDate_new
-FROM consumer360_raw
+
+-- Verify conversion
+SELECT InvoiceDate, InvoiceDate_new FROM consumer360_raw
 LIMIT 10;
 SELECT InvoiceDate
 FROM consumer360_raw
