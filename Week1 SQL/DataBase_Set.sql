@@ -1,6 +1,21 @@
-create database Project_Retail; --Data base creation
+-- ============================================
+-- Database Creation
+-- ============================================
+
+-- Create a new database for Retail Analysis Project
+CREATE database Project_Retail; 
+
+-- Select the database to work on
 use Project_Retail;
-CREATE TABLE consumer360_raw (  --Table Creation
+
+-- ============================================
+-- Raw Data Table Creation
+-- ============================================
+
+-- Create raw table to store unprocessed retail data
+-- All columns are initially defined with flexible data types
+-- to allow smooth CSV import without errors
+CREATE TABLE consumer360_raw (  
     InvoiceNo     VARCHAR(50),
     ProductCode   VARCHAR(50),
     ProductName   VARCHAR(255),
