@@ -1,8 +1,18 @@
--- Standardize NULLs
+-- ============================================
+-- Data Cleaning & Standardization Script
+-- ============================================
+
+-- Disable safe update mode to allow updates without key constraints
 SET SQL_SAFE_UPDATES = 0;
+
+-- --------------------------------------------
+-- Handle NULL and invalid CustomerID values
+-- --------------------------------------------
 UPDATE consumer360_raw
 SET CustomerID = NULL
 WHERE CustomerID = ' ' OR CustomerID = 0;
+
+-- Verify changes
 select CustomerID from consumer360_raw;
 
 -- Handle negative quantities 
