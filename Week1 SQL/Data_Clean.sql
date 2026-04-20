@@ -15,9 +15,13 @@ WHERE CustomerID = ' ' OR CustomerID = 0;
 -- Verify changes
 select CustomerID from consumer360_raw;
 
--- Handle negative quantities 
+-- --------------------------------------------
+-- Remove invalid transactions (negative/zero quantity)
+-- --------------------------------------------
 DELETE FROM consumer360_raw
 WHERE Quantity <= 0;
+
+-- Verify Quantity
 select Quantity from consumer360_raw;
 
 -- Fix inconsistent product names (missing values)
