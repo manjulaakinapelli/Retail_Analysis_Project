@@ -16,14 +16,14 @@ use Project_Retail;
 -- All columns are initially defined with flexible data types
 -- to allow smooth CSV import without errors
 CREATE TABLE consumer360_raw (  
-    InvoiceNo     VARCHAR(50),
-    ProductCode   VARCHAR(50),
-    ProductName   VARCHAR(255),
-    Quantity      INT,
-    InvoiceDate   VARCHAR(50),   -- keep as text for safe import
-    UnitPrice     DECIMAL(18,2),
-    CustomerID    INT,
-    Country       VARCHAR(100),
-    PaymentMethod VARCHAR(50)
+    InvoiceNo     VARCHAR(50),  -- Unique invoice/transaction number
+    ProductCode   VARCHAR(50),  -- Product identifier
+    ProductName   VARCHAR(255),  -- Name of the product
+    Quantity      INT,   -- Number of units purchased
+    InvoiceDate   VARCHAR(50),   -- Stored as text initially (for safe import)
+    UnitPrice     DECIMAL(18,2),  -- Price per unit
+    CustomerID    INT,   -- Customer identifier
+    Country       VARCHAR(100),  -- Customer location
+    PaymentMethod VARCHAR(50)  -- Payment method used
 );
 SELECT * FROM consumer360_raw;
