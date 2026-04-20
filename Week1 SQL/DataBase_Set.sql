@@ -26,4 +26,10 @@ CREATE TABLE consumer360_raw (
     Country       VARCHAR(100),  -- Customer location
     PaymentMethod VARCHAR(50)  -- Payment method used
 );
+
+-- ============================================
+-- Preview Raw Data
+-- ============================================
+
+-- View data after import
 SELECT * FROM consumer360_raw;
