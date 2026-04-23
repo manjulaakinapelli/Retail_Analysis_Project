@@ -1,7 +1,7 @@
 # 🛒 Retail Analytics End-to-End Project
 
 ## 📌 Project Overview
-This project focuses on analyzing retail sales data to understand customer behavior and generate actionable business insights. It covers the complete data analytics workflow from data cleaning and modeling to analysis, visualization, and automation.
+This project focuses on analyzing retail sales data to understand customer behavior and generate actionable business insights. It covers the complete data analytics workflow from data cleaning and modeling to analysis, visualization and automation.
 
 ---
 
